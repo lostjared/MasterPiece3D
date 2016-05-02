@@ -11,5 +11,30 @@ make
 
 libmx can be found here: https://github.com/lostjared/libmx
 
+Controls:
+
+Left Arrow - Move Blocks Left
+
+Right Arrow - Move Blocks Right
+
+Down Arrow - Move Blocks Down
+
+A - Swap colors of blocks
+
+Z - Rotate X +
+
+X - Rotate X -
+
+C - Rotate Y +
+
+V - Rotate Y -
+
+D - Rotate Z +
+
+F - Rotate Z -
+
+Line up 3 blocks of the same color either going horizontal, vertical, or diagnoal to clear them
+and gain points.
+
 
 
