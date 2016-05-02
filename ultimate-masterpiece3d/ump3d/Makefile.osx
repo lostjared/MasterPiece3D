@@ -1,0 +1,7 @@
+CC=g++
+FLAGS=`pkg-config mx sdl --cflags --libs`
+
+all:
+	$(CC) $(FLAGS) main.cpp game.cpp mp.cpp -o ump3d -framework OpenGL
+clean:
+	rm -rf ump3d *~

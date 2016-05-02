@@ -1,0 +1,13 @@
+# this is called after the build is complete to build
+# a static build of ump3d
+# if you wish to use it  you must change the MINGWPATH variable
+# and the name of the cross compiler
+
+
+MINGWPATH=/users/jared/mingw
+MINGW=i686-pc-mingw32
+
+all:
+	$(MINGW)-windres mp.rc -o icon.o
+	$(MINGW)-g++ *.o -o ump3d.exe -static `$(MINGWPATH)/bin/sdl-config --cflags   --libs` -I$(MINGWPATH)/include $(MINGWPATH)/lib/libmx.a $(MINGWPATH)/lib/libz.a  -luser32 -lgdi32 -lwinmm -lopengl32 -lglu32 -lwsock32
+	$(MINGW)-strip --strip-all ump3d.exe
