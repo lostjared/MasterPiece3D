@@ -92,5 +92,45 @@ fi
 AC_SUBST(LIBSDL_LIBS)
 AC_SUBST(LIBSDL_CFLAGS)
 AC_SUBST(LIBSDL_RPATH)
+
+case "${target}" in
+
+*darwin*|*apple*)
+fastSOURCE="Darwin"
+fastDIR="x64"
+PLATFORMZ="-framework OpenGL"
+AC_DEFINE_UNQUOTED(DARWIN, 1, [darwin])
+;;
+
+x86_64*linux*)
+fastSOURCE="linux x64"
+fastDIR="x64"
+PLATFORMZ="-lGL -lGLU"
+;;
+
+*86*linux*)
+fastSOURCE="linux"
+fastDIR="fast"
+PLATFORMZ="-lGL -lGLU"
+;;
+*mingw32*|*cygwin)
+fastSOURCE="windows"
+fastDIR="fast_w32"
+# staticly compiled libz
+PLATFORMZ="-no-undefined  -lwsock32 -lopengl32 -lglu32  -lSDL -lz -lpng12  -ljpeg"
+WINPLAT="-lwsock32"
+;;
+#powerpc*)
+#fastSOURCE="powerpc"
+#fastDIR="x64"
+#PLATFORMZ="-lGL -lGLU"
+#AC_DEFINE_UNQUOTED(SYSTEM_PS3, 1, [ps3])
+#;;
+
+esac
+
+
+AC_SUBST(PLATFORMZ)
+
 AC_OUTPUT(Makefile ump3d/Makefile)
 
